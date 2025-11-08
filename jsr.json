@@ -1,0 +1,36 @@
+{
+  "name": "@dep/table",
+  "version": "1.0.0",
+  "description": "Tiny table builder for any format — text, HTML, CSV, Markdown, JSON, or custom outputs.",
+  "exports": "./src/main.ts",
+  "author": {
+    "name": "Estarlin R.",
+    "email": "dev@estarlincito.com",
+    "url": "https://estarlincito.com"
+  },
+  "homepage": "https://github.com/dep-ts/table#readme",
+  "repository": "https://github.com/dep-ts/table",
+  "bugs": "https://github.com/dep-ts/table/issues",
+  "keywords": [
+    "table",
+    "builder",
+    "csv",
+    "markdown",
+    "json",
+    "html",
+    "custom",
+    "formatter",
+    "renderer",
+    "data",
+    "rows",
+    "fluent-api",
+    "deno",
+    "node",
+    "jsr"
+  ],
+  "license": "MIT",
+  "publish": {
+    "include": ["src", "LICENSE", "README.md"],
+    "exclude": ["**/tests/**"]
+  }
+}
