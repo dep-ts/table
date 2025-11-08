@@ -1,5 +1,5 @@
-import { Builder } from "./builder.ts";
-import { TableKind } from "./types.ts";
+import { Builder } from './builder.ts';
+import { TableKind } from './types.ts';
 
 /**
  * Builder for plain text table output.
@@ -16,8 +16,8 @@ import { TableKind } from "./types.ts";
  * ```
  */
 export class Text extends Builder<string> {
-  override readonly kind: TableKind = "text";
-  #separator: string = "  ";
+  override readonly kind: TableKind = 'text';
+  #separator: string = ' ';
   #columnWidths: Map<number, number> = new Map();
 
   /**
@@ -35,7 +35,7 @@ export class Text extends Builder<string> {
   /**
    * Sets the separator between cells in a row.
    *
-   * @param {string} separator - Text to place between cells (default: `'  '`).
+   * @param {string} separator - Text to place between cells (default: `' '`).
    * @returns {this} - For method chaining.
    */
   setSeparator(separator: string): this {
@@ -46,22 +46,23 @@ export class Text extends Builder<string> {
   override build(): string {
     const rows = this.rows;
 
-    if (rows.length === 0) return "";
+    if (rows.length === 0) return '';
 
     const columnCount = Math.max(...rows.map((row) => row.length));
 
-    const widths = Array.from({ length: columnCount }, (_, i) =>
-      Math.max(
-        ...rows.map((row) => String(row[i])?.length ?? 0),
-        this.#columnWidths.get(i) ?? 0,
-      ));
+    const widths = Array.from(
+      { length: columnCount },
+      (_, i) =>
+        this.#columnWidths.get(i) ??
+        Math.max(...rows.map((row) => String(row[i]).length))
+    );
 
     return rows
       .map((row) =>
         row
-          .map((cell, i) => String(cell ?? "").padEnd(widths[i]))
+          .map((cell, i) => String(cell ?? '').padEnd(widths[i]))
           .join(this.#separator)
       )
-      .join("\n");
+      .join('\n');
   }
 }

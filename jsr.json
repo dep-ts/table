@@ -1,6 +1,6 @@
 {
   "name": "@dep/table",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tiny table builder for any format — text, HTML, CSV, Markdown, JSON, or custom outputs.",
   "exports": "./src/main.ts",
   "author": {
